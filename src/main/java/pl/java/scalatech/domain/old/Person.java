@@ -5,10 +5,9 @@ import java.math.BigDecimal;
 import pl.java.scalatech.domain.type.Sex;
 
 /**
- * @author Sławomir Borowiec 
- * Module name : university_training
- * Creating time :  14 kwi 2015 23:35:52
- 
+ * @author Sławomir Borowiec
+ *         Module name : university_training
+ *         Creating time : 14 kwi 2015 23:35:52
  */
 public class Person {
 
@@ -16,11 +15,11 @@ public class Person {
     private BigDecimal salary;
     private int age;
     private Sex sex;
-    
-    
+
     public Person() {
         super();
     }
+
     public Person(String name, BigDecimal salary, int age, Sex sex) {
         super();
         this.name = name;
@@ -28,30 +27,39 @@ public class Person {
         this.age = age;
         this.sex = sex;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public BigDecimal getSalary() {
         return salary;
     }
+
     public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
+
     public int getAge() {
         return age;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
+
     public Sex getSex() {
         return sex;
     }
+
     public void setSex(Sex sex) {
         this.sex = sex;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -62,6 +70,7 @@ public class Person {
         result = prime * result + ((sex == null) ? 0 : sex.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -87,6 +96,7 @@ public class Person {
             return false;
         return true;
     }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -95,7 +105,45 @@ public class Person {
         sb.append("sex -> ").append(sex.name());
         return sb.toString();
     }
-    
-    
-    
+
+    public Person(PersonBuilder personBuilder) {
+        this.name = personBuilder.name;
+        this.age = personBuilder.age;
+        this.sex = personBuilder.sex;
+        this.salary = personBuilder.salary;
+    }
+
+    public static class PersonBuilder {
+
+        private static final long serialVersionUID = 6868681866154038647L;
+        private final String name;
+        private BigDecimal salary;
+        private int age;
+        private Sex sex;
+
+        public PersonBuilder(String name) {
+            this.name = name;
+
+        }
+
+        public PersonBuilder salary(BigDecimal salary) {
+            this.salary = salary;
+            return this;
+        }
+
+        public PersonBuilder age(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public PersonBuilder sex(Sex sex) {
+            this.sex = sex;
+            return this;
+        }
+
+        public Person build() {
+            return new Person(this);
+        }
+    }
+
 }
