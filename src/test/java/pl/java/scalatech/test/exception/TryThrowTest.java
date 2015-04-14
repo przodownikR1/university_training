@@ -45,7 +45,7 @@ public class TryThrowTest {
            e.printStackTrace();
         }
     }
-    @Test
+    @Test(expected=RuntimeException.class)
     public void shouldServiceThrowExceptionCheckRight(){
         //given
         SampleService ss = new SampleService();
