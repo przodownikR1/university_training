@@ -35,4 +35,24 @@ public class TryThrowTest {
     public void shouldLoggerWork(){
         log.info("hello world !!");
     }
+    @Test
+    public void shouldServiceThrowExceptionBad(){
+        //given
+        SampleService ss = new SampleService();
+        try{
+            ss.print();
+        }catch(Exception e){
+           e.printStackTrace();
+        }
+    }
+    @Test
+    public void shouldServiceThrowExceptionCheckRight(){
+        //given
+        SampleService ss = new SampleService();
+        try{
+            ss.print();
+        }catch(Exception e){
+           throw new RuntimeException(e.getMessage(),e);
+        }
+    }
 }
