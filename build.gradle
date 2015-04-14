@@ -1,0 +1,56 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply from: "scriptGradle/depencencies.gradle"
+apply from: "scriptGradle/report.gradle"
+apply from: "scriptGradle/groovy.gradle"
+apply from: "scriptGradle/assembler.gradle"
+apply from: "scriptGradle/distribution.gradle"
+apply from: "scriptGradle/release.gradle"
+apply from: "scriptGradle/sonar.gradle"
+
+libsDirName = './target'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+sourceSets {
+    intTest
+    main {
+        java { srcDir 'src/main/java' }
+        resources { srcDir 'src/main/resources' }
+    }
+    test {
+        java { srcDir 'src/test/java' }
+        resources { srcDir 'src/test/resources' }
+    }
+}
+
+jar {
+    baseName=projectName
+    manifest {
+        attributes 'Implementation-Title': 'firstTraining',
+        'Implementation-Version': version,
+        'Built-By': System.getProperty('user.name'),
+        'Built-Date': new Date(),
+        'Built-JDK': System.getProperty('java.version'),
+        'Built-Gradle': gradle.gradleVersion
+    }
+}
+
+
+
+
+
+
+project.tasks.test.configure { includes = ['**/*Test.class']}
+
+test {
+    testLogging {
+        events "started", "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+    testLogging.showStandardStreams = true
+}
+
+task wrapper(type: Wrapper) {  }
+

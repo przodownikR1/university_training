@@ -1,0 +1,29 @@
+apply from: './dependencies.properties'
+
+repositories {
+    maven { url "http://localhost:8487/nexus/content/groups/public/" }
+    maven { url "http://repo.spring.io/libs-milestone" }
+    mavenLocal()
+}
+
+dependencies {
+    compile ("org.codehaus.groovy:groovy:${groovyVersion}")
+ 
+    compile ("org.joda:joda-money:${jodaMoneyVersion}")
+    compile("org.projectlombok:lombok:${lombokVersion}")
+    compile("com.google.guava:guava:${guavaVersion}")
+
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("org.slf4j:slf4j-ext:$slf4jVersion")
+    compile("ch.qos.logback:logback-core:$logbackVersion")
+
+    testCompile("org.easytesting:fest-assert:${festAssertVersion}")
+    testCompile("org.hamcrest:hamcrest-all:$hamcrestVersion")
+    testCompile("org.mockito:mockito-all:$mockitoVersion")
+    testCompile("junit:junit:$junitVersion")
+
+}
+
+configurations {
+    all*.exclude group: "commons-logging", module: "commons-logging"
+}
