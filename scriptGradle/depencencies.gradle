@@ -19,6 +19,8 @@ dependencies {
     compile("joda-time:joda-time:$jodaTimeVersion")
     
     
+    compile("org.joda:joda-money:$jodaMoneyVersion")
+    
     testCompile("org.easytesting:fest-assert:${festAssertVersion}")
     testCompile("org.hamcrest:hamcrest-all:$hamcrestVersion")
     testCompile("org.mockito:mockito-all:$mockitoVersion")

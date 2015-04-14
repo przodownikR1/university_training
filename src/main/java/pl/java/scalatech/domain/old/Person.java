@@ -1,6 +1,6 @@
 package pl.java.scalatech.domain.old;
 
-import java.math.BigDecimal;
+import org.joda.money.Money;
 
 import pl.java.scalatech.domain.type.Sex;
 
@@ -12,7 +12,7 @@ import pl.java.scalatech.domain.type.Sex;
 public class Person {
 
     private String name;
-    private BigDecimal salary;
+    private Money salary;
     private int age;
     private Sex sex;
 
@@ -20,7 +20,7 @@ public class Person {
         super();
     }
 
-    public Person(String name, BigDecimal salary, int age, Sex sex) {
+    public Person(String name, Money salary, int age, Sex sex) {
         super();
         this.name = name;
         this.salary = salary;
@@ -36,11 +36,11 @@ public class Person {
         this.name = name;
     }
 
-    public BigDecimal getSalary() {
+    public Money getSalary() {
         return salary;
     }
 
-    public void setSalary(BigDecimal salary) {
+    public void setSalary(Money salary) {
         this.salary = salary;
     }
 
@@ -59,6 +59,8 @@ public class Person {
     public void setSex(Sex sex) {
         this.sex = sex;
     }
+
+   
 
     @Override
     public int hashCode() {
@@ -117,7 +119,7 @@ public class Person {
 
         private static final long serialVersionUID = 6868681866154038647L;
         private final String name;
-        private BigDecimal salary;
+        private Money salary;
         private int age;
         private Sex sex;
 
@@ -126,7 +128,7 @@ public class Person {
 
         }
 
-        public PersonBuilder salary(BigDecimal salary) {
+        public PersonBuilder salary(Money salary) {
             this.salary = salary;
             return this;
         }
