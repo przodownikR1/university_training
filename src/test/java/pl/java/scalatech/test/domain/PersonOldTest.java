@@ -21,7 +21,9 @@ import pl.java.scalatech.domain.type.Sex;
 public class PersonOldTest {
     @Test
     public void shouldCreatePerson() {
+        //given
         Person person = new Person("przodownik", Money.of(CurrencyUnit.getInstance(Locale.getDefault()), new BigDecimal("23")), 36, Sex.MALE);
+        // then
         System.out.println(person);
     }
 
@@ -37,7 +39,9 @@ public class PersonOldTest {
 
     @Test
     public void shouldCreatePersonNew() {
+        //given
         PersonNew person = new PersonNew();
+        //then
         System.out.println(person);
     }
 }

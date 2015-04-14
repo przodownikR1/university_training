@@ -34,7 +34,7 @@
  
   <logger name="pl.java.scalatech" additivity="false">
         <level value="INFO" />
-        <appender-ref ref="Console" />
+        <appender-ref ref="console" />
     </logger>
   <logger name="org.springframework" level="info" />
   
