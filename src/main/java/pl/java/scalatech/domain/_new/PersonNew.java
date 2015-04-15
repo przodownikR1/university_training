@@ -14,6 +14,7 @@ import lombok.Setter;
 public class PersonNew {
     @Getter
     private String login;
+    float pi = 3_14_15F;
     
     @NonNull @Getter @Setter
     private String name;
