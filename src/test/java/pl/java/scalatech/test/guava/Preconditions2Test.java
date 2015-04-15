@@ -1,8 +1,7 @@
 package pl.java.scalatech.test.guava;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
-
 import org.fest.assertions.Assertions;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
