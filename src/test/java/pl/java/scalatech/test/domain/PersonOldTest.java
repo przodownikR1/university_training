@@ -32,9 +32,5 @@ public class PersonOldTest {
 
     }
 
-    @Test
-    public void shouldCreatePersonNew() {
-        PersonNew person = new PersonNew();
-        System.out.println(person);
-    }
+    
 }
