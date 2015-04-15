@@ -18,9 +18,9 @@ dependencies {
     compile("org.slf4j:slf4j-simple:$slf4jVersion")
     compile("ch.qos.logback:logback-core:$logbackVersion")
     compile("joda-time:joda-time:$jodaTimeVersion")
-    compile("org.easytesting:fest-assert:$fest-assertVersion")
+    compile("org.easytesting:fest-assert:$festAssertVersion")
    
-    
+    testCompile("com.googlecode.catch-exception:catch-exception:1.2.0")
     compile("org.unitils:unitils-core:$unitilsVersion")
     compile("org.unitils:unitils-io:$unitilsVersion")
     //compile("org.unitils:unitils-test:$unitilsVersion")

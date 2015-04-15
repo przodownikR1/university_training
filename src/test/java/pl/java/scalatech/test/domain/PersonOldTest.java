@@ -8,7 +8,7 @@ import org.joda.money.Money;
 import org.junit.Assert;
 import org.junit.Test;
 
-import pl.java.scalatech.domain._new.PersonNew;
+import pl.java.scalatech.domain.new_one.PersonNew;
 import pl.java.scalatech.domain.old.Person;
 import pl.java.scalatech.domain.type.Sex;
 
