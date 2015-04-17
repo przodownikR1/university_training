@@ -4,6 +4,7 @@ package pl.java.scalatech.test.unitils;
 
 import java.io.File;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.unitils.UnitilsJUnit4;
 import org.unitils.io.annotation.FileContent;
@@ -20,6 +21,7 @@ public class ReadFileTest extends UnitilsJUnit4{
     
     
     @Test
+    @Ignore
     public void testFile() {
     System.out.println(content);
     // Assert.assertTrue(file.exists());
