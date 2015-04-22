@@ -27,7 +27,7 @@
 		  
 	</properties>
 	
-	<profiles>
+	<profile s>
 		<profile>
 			<id>sonar</id>
 			<activation>
