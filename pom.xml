@@ -9,7 +9,7 @@
 	<description>Sample project for trainig</description>
 
 
-	<name>firstTraining</name>
+	<name >firstTraining</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
