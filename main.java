@@ -1,0 +1,2 @@
+przodownik
+przodownik
