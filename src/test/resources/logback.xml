@@ -11,7 +11,7 @@
   
   <appender name="FILE"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>jpaPlugin.log</file>
+        <file>ut.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
             <fileNamePattern>training_%d{yyyy-MM-dd}.log
