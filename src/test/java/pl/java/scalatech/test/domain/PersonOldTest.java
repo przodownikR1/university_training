@@ -8,6 +8,7 @@ import pl.java.scalatech.domain._new.PersonNew;
 import pl.java.scalatech.domain.old.Person;
 import pl.java.scalatech.domain.type.Sex;
 
+
 /**
  * @author Sławomir Borowiec 
  * Module name : university_training
