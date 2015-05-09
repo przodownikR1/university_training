@@ -16,7 +16,9 @@ dependencies {
     compile("org.slf4j:slf4j-api:$slf4jVersion")
     compile("org.slf4j:slf4j-ext:$slf4jVersion")
     compile("ch.qos.logback:logback-core:$logbackVersion")
-
+    compile("joda-time:joda-time:$jodaTimeVersion")
+    
+    
     testCompile("org.easytesting:fest-assert:${festAssertVersion}")
     testCompile("org.hamcrest:hamcrest-all:$hamcrestVersion")
     testCompile("org.mockito:mockito-all:$mockitoVersion")
