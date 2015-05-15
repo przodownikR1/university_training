@@ -1,37 +1,23 @@
 package pl.java.scalatech.domain._new;
 
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
 
 /**
  * @author Sławomir Borowiec
  *         Module name : university_training
  *         Creating time : 14 kwi 2015 23:41:55
  */
-
+@Data
+@NoArgsConstructor
+@Builder
 public class PersonNew {
-    @Getter
-    private String login;
-    float pi = 3_14_15F;
-    
-    @NonNull @Getter @Setter
-    private String name;
+    String name;
+    String age;
 
-    
-    //public PersonNew(@NonNull String login) {
-      //  this.login = login;
-    //}
-
-    public PersonNew(@NonNull String login, String name) {
-        this.login = login;
-        this.name = name;
+    public PersonNew(String name, String age) {
+        // TODO Auto-generated constructor stub
     }
 
-
-   
-
-   
-    
 }
