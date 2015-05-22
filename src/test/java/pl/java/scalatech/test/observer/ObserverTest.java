@@ -7,7 +7,11 @@ import java.util.function.Consumer;
 import org.junit.Test;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-
+/*
+    compile("org.slf4j:slf4j-api:$slf4jVersion")
+    compile("ch.qos.logback:logback-core:$logbackVersion")
+    compile("ch.qos.logback:logback-classic:$logbackVersion")
+ */
 abstract class MyObserverable extends Observable{
     public abstract void setData(String data);
 }
