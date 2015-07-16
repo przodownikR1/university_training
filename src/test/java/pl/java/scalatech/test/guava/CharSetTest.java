@@ -1,12 +1,13 @@
 package pl.java.scalatech.test.guava;
 
+import static org.fest.assertions.Assertions.assertThat;
 import lombok.extern.slf4j.Slf4j;
 
-import org.fest.assertions.Assertions;
 import org.junit.Test;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
+import com.google.common.html.HtmlEscapers;
 
 @Slf4j
 public class CharSetTest {
@@ -24,13 +25,13 @@ public class CharSetTest {
         String tabPlusSpace = "Kawasaki  +      powercommander     =  rocket";
         String expected = "Kawasaki + powercommander = rocket";
         String result = CharMatcher.WHITESPACE.collapseFrom(tabPlusSpace, ' ');
-        Assertions.assertThat(result).isEqualTo(expected);
+        assertThat(result).isEqualTo(expected);
 
         //trim
         tabPlusSpace = "     Kawasaki  +      powercommander     =  rocket";
 
         result = CharMatcher.WHITESPACE.trimAndCollapseFrom(tabPlusSpace, ' ');
-        Assertions.assertThat(result).isEqualTo(expected);
+        assertThat(result).isEqualTo(expected);
     }
 
     @Test
@@ -38,14 +39,14 @@ public class CharSetTest {
         String lAndN = "assadasd9fgfg34";
         String expected = "934";
         String retain = CharMatcher.JAVA_DIGIT.retainFrom(lAndN);
-        Assertions.assertThat(retain).isEqualTo(expected);
+        assertThat(retain).isEqualTo(expected);
     }
 
     @Test
     public void shouldRemoveSpecialCharacters() {
         String input = "przodo$%#downik*.;' pracy _79";
         CharMatcher matcher = CharMatcher.JAVA_LETTER_OR_DIGIT;
-        Assertions.assertThat(matcher.retainFrom(input)).isEqualTo("przododownikpracy79");
+        assertThat(matcher.retainFrom(input)).isEqualTo("przododownikpracy79");
 
     }
 
@@ -54,20 +55,20 @@ public class CharSetTest {
         String input = "****przodownik==";
 
         String result = CharMatcher.is('*').trimLeadingFrom(input);
-        Assertions.assertThat(result).isEqualTo("przodownik==");
+        assertThat(result).isEqualTo("przodownik==");
 
         result = CharMatcher.is('=').trimTrailingFrom(input);
-        Assertions.assertThat(result).isEqualTo("****przodownik");
+        assertThat(result).isEqualTo("****przodownik");
 
         String str = CharMatcher.WHITESPACE.trimLeadingFrom("       przodownik       ");
 
-        Assertions.assertThat(str).isEqualTo("przodownik       ");
+        assertThat(str).isEqualTo("przodownik       ");
 
         String rightStr = CharMatcher.WHITESPACE.trimTrailingFrom("       przodownik       ");
-        Assertions.assertThat(rightStr).isEqualTo("       przodownik");
+        assertThat(rightStr).isEqualTo("       przodownik");
 
         String trimmedStr = CharMatcher.WHITESPACE.trimFrom("       przodownik       ");
-        Assertions.assertThat(trimmedStr).isEqualTo("przodownik");
+        assertThat(trimmedStr).isEqualTo("przodownik");
 
     }
 
@@ -77,13 +78,24 @@ public class CharSetTest {
         String input = "przodownik-pracy=borowiec";
 
         String result = CharMatcher.anyOf("-=").replaceFrom(input, '~');
-        Assertions.assertThat(result).isEqualTo("przodownik~pracy~borowiec");
+        assertThat(result).isEqualTo("przodownik~pracy~borowiec");
 
     }
 
     @Test
     public void shouldRangeTest() {
-        CharMatcher mch = CharMatcher.inRange('A', 'C');
+        String phone = CharMatcher.inRange('0', '9').retainFrom("516-168-690");
+        assertThat("516168690").isEqualTo(phone);
+
+    }
+
+    @Test
+    public void shouldlEscapeWork() {
+        assertThat(HtmlEscapers.htmlEscaper().escape("<")).isEqualTo("&lt;");
+        assertThat(HtmlEscapers.htmlEscaper().escape(">")).isEqualTo("&gt;");
+        assertThat(HtmlEscapers.htmlEscaper().escape("'")).isEqualTo("&#39;");
+        assertThat(HtmlEscapers.htmlEscaper().escape("\"")).isEqualTo("&quot;");
+        assertThat(HtmlEscapers.htmlEscaper().escape("&")).isEqualTo("&amp;");
 
     }
 }
