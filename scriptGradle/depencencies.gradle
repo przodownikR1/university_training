@@ -33,6 +33,7 @@ dependencies {
     testCompile("org.hamcrest:hamcrest-all:$hamcrestVersion")
     testCompile("org.mockito:mockito-all:$mockitoVersion")
     testCompile("junit:junit:$junitVersion")
+    testCompile 'org.assertj:assertj-core:${assertjVersion}'
 
 }
 
