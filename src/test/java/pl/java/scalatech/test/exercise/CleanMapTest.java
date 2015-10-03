@@ -1,29 +1,27 @@
 package pl.java.scalatech.test.exercise;
 
+import static com.google.common.base.Joiner.on;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
 import static java.util.Collections.singleton;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.MapAssert.*;
+import static org.fest.assertions.MapAssert.entry;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.apache.commons.lang.StringUtils;
 import org.fest.assertions.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 @Slf4j
 public class CleanMapTest {
 
@@ -52,11 +50,12 @@ public class CleanMapTest {
         
       //given
       assertThat(map).hasSize(6);
-      map.remove(null);
+      map.values().remove(null);
       assertThat(map).hasSize(5);
-      map.remove("");
+      map.values().remove("");
+      map.remove(null);
       map.entrySet().stream().forEach(x->log.info("key : {} # value : {}",x.getKey(),x.getValue())); 
-      assertThat(map).hasSize(4);
+      assertThat(map).hasSize(3);
         
     }
     
@@ -91,6 +90,16 @@ public class CleanMapTest {
         strings = strings.stream().filter(Objects::nonNull).collect(Collectors.toList());
         Assertions.assertThat(strings).hasSize(2); 
        
+    }
+    @Test
+    public void emptyMap() {
+        Map<String, String> errors = Maps.newHashMap();
+        errors.put("Error Code", null);
+        errors.values().remove("null");
+        errors.values().remove("");        
+        String result = on(",").withKeyValueSeparator("=").useForNull("test").join(errors);
+        log.info("+++ reuslt : {}",result);
+        
     }
     
 }
