@@ -8,7 +8,6 @@ import org.joda.money.Money;
 import org.junit.Assert;
 import org.junit.Test;
 
-import pl.java.scalatech.domain._new.PersonNew;
 import pl.java.scalatech.domain.old.Person;
 import pl.java.scalatech.domain.type.Sex;
 
@@ -38,11 +37,6 @@ public class PersonOldTest {
 
     }
 
-    @Test
-    public void shouldCreatePersonNew() {
-        //given
-        PersonNew person = new PersonNew();
-        //then
-        System.out.println(person);
-    }
+
+
 }
