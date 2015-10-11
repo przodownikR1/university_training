@@ -1,4 +1,4 @@
-package pl.java.scalatech.test.guava;
+package pl.java.scalatech.test.guava.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
