@@ -1,13 +1,14 @@
 package pl.java.scalatech.test.guava;
 
 import static org.fest.assertions.Assertions.assertThat;
-import lombok.extern.slf4j.Slf4j;
 
 import org.junit.Test;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.html.HtmlEscapers;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class CharSetTest {
