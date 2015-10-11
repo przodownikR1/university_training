@@ -1,6 +1,6 @@
 package pl.java.scalatech.test.guava;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
@@ -98,5 +98,12 @@ public class CharSetTest {
         assertThat(HtmlEscapers.htmlEscaper().escape("\"")).isEqualTo("&quot;");
         assertThat(HtmlEscapers.htmlEscaper().escape("&")).isEqualTo("&amp;");
 
+    }
+    @Test
+    public void shouldMatcherWork() {
+        String code = "(22)-342-3 2  -43";
+        CharMatcher matcher = CharMatcher.DIGIT.or(CharMatcher.WHITESPACE).or(CharMatcher.anyOf("()-"));
+
+        assertThat(matcher.matchesAllOf(code)).isTrue();
     }
 }
