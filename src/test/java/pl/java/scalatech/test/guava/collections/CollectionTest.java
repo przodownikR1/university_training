@@ -1,5 +1,6 @@
 package pl.java.scalatech.test.guava.collections;
 
+import static org.fest.assertions.Assertions.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -140,7 +141,17 @@ public class CollectionTest {
     public void shouldGuavaMultiSetWork() {
         Multiset<String> wordsMultiset = HashMultiset.create();
         wordsMultiset.addAll(wordsImmutable);
-        Assertions.assertThat(wordsMultiset.count("bmw")).isEqualTo(2);
+      
+        wordsMultiset.add("star",10);
+        
+        log.info("wordsMultiset: after set 10 elements:  {}",wordsMultiset);
+        wordsMultiset.remove("star",4);
+        log.info("wordsMultiset: after removed : {}",wordsMultiset);
+        
+        wordsMultiset.setCount("star", 5);
+        assertThat(wordsMultiset.count("star")).isEqualTo(5);
+        
+        assertThat(wordsMultiset.count("bmw")).isEqualTo(2);
 
     }
 

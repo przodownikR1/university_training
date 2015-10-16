@@ -1,9 +1,14 @@
 package pl.java.scalatech.test.guava.collections;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Ordering.natural;
 import static com.google.common.collect.Sets.newHashSet;
+import static java.util.Collections.unmodifiableCollection;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,6 +20,7 @@ import org.junit.rules.ExpectedException;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
 import lombok.AllArgsConstructor;
@@ -71,6 +77,26 @@ public class ImmutableCollectionTest {
         salary.get(1).setName("karol");
         log.info("{}",salary);
     }
+    
+    @Test
+    public void shouldModifyCollectionUnmodifiable(){
+        List<Wrapper> wrapped = newArrayList(new Wrapper("slawek", 2),new Wrapper("piotr", 2));
+        Collection<Wrapper> salary =Collections.unmodifiableCollection(wrapped);
+        salary.stream().forEach(t-> {t.setName(t.getName()+"x");});
+        log.info("{}",salary);
+    }
+    @Test
+    public void unmodifiableTest() {
+       
+            List list = newArrayList("Once", "king","test");
+            log.info("List to be modified: {}", list);
+            Collection unmodifiableList = unmodifiableCollection(list);
+            log.info("Modify the wrapped list {}",unmodifiableList);
+            list.set(2, "AN EMPEROR");
+            log.info("After the change: {}" , unmodifiableList);
+        
+    }
+    
     
     @Test
     public void shouldOrderCollection() {
