@@ -141,27 +141,29 @@ public class CollectionTest {
         Multiset<String> wordsMultiset = HashMultiset.create();
         wordsMultiset.addAll(wordsImmutable);
         Assertions.assertThat(wordsMultiset.count("bmw")).isEqualTo(2);
-        
+
     }
-    
-  List<Programmer> programmers = Lists.newArrayList(new Programmer("grooby", "przodownik"),new Programmer("java", "agnieszka"),new Programmer("java", "marcin"));
-    
+
+    List<Programmer> programmers = Lists.newArrayList(new Programmer("grooby", "przodownik"), new Programmer("java", "agnieszka"), new Programmer("java",
+            "marcin"));
+
     @Test
-    public void oldMultiList(){
-    Map<String, List<String>> languagesMap = new HashMap<>();
-    for (Programmer programmer : programmers) {
-        String language = programmer.getLanguage();
-        if (languagesMap.get(language) == null) {
-            languagesMap.put(language, new ArrayList< String >());
+    public void oldMultiList() {
+        Map<String, List<String>> languagesMap = new HashMap<>();
+        for (Programmer programmer : programmers) {
+            String language = programmer.getLanguage();
+            if (languagesMap.get(language) == null) {
+                languagesMap.put(language, new ArrayList<String>());
+            }
+            languagesMap.get(language).add(programmer.getEmail());
         }
-        languagesMap.get(language).add(programmer.getEmail());
+        Assertions.assertThat(languagesMap.get("java")).isEqualTo(Lists.newArrayList("agnieszka", "marcin"));
+
     }
-    Assertions.assertThat(languagesMap.get("java")).isEqualTo(Lists.newArrayList("agnieszka","marcin"));
- 
-    }
+
     @Test
-    public void shouldGuavaMultiMapWork(){
-        Multimap< String, String > languagesMap = HashMultimap.create();
+    public void shouldGuavaMultiMapWork() {
+        Multimap<String, String> languagesMap = HashMultimap.create();
         for (Programmer programmer : programmers) {
             languagesMap.put(programmer.getLanguage(), programmer.getEmail());
         }
@@ -169,9 +171,9 @@ public class CollectionTest {
         Assertions.assertThat(languagesMap.containsKey("grooby"));
         System.out.println(languagesMap + "  " + languagesMap.entries());
     }
-    
+
     @Test
-    public void shouldHashMultiMapWork(){
+    public void shouldHashMultiMapWork() {
         HashMultimap<Integer, String> map = HashMultimap.create();
         map.put(1, "a");
         map.put(1, "b");
@@ -180,31 +182,31 @@ public class CollectionTest {
         map.put(3, "y");
         map.put(3, "ya");
         System.out.println(map);
-        Assertions.assertThat(map.get(3)).contains("ya","y","x");
+        Assertions.assertThat(map.get(3)).contains("ya", "y", "x");
         Assertions.assertThat(map.get(99)).isEmpty();
         Assertions.assertThat(map.containsValue("x")).isTrue();
-        Assertions.assertThat(map.keySet()).contains(1,2,3);
+        Assertions.assertThat(map.keySet()).contains(1, 2, 3);
         System.out.println(map.keys());
-        
-        
-       
+
     }
+
     @Test
-    public void shouldCollectionOperartionWork(){
+    public void shouldCollectionOperartionWork() {
         List<Integer> intList = Lists.newArrayList(1, 2, 3, 4, 5, 1, 2);
         Assertions.assertThat(Iterables.frequency(intList, 1)).isEqualTo(2);
         Integer[] intArray = Iterables.toArray(intList, Integer.class);
-        Assertions.assertThat(intArray).contains(1,2,3,4,5,1,2);
+        Assertions.assertThat(intArray).contains(1, 2, 3, 4, 5, 1, 2);
     }
+    
+    
+   
+    
 }
 
-
-
-
-class Programmer{
+class Programmer {
     private String language;
     private String email;
-    
+
     public Programmer(String language, String email) {
         super();
         this.language = language;
@@ -226,5 +228,5 @@ class Programmer{
     public void setLanguage(String language) {
         this.language = language;
     }
-    
+
 }
